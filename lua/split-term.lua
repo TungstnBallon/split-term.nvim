@@ -1,5 +1,3 @@
-local M = {}
-
 local buffer ---@type integer?
 local window ---@type integer?
 local enter_terminal_mode = true ---@type boolean
@@ -28,33 +26,26 @@ local function ensure_valid_buffer()
 end
 local function show_buffer()
 	assert(not window or not vim.api.nvim_win_is_valid(window), "window is not shown")
-	window = vim.api.nvim_open_win(assert(buffer), true, { vertical = M.get_vertical() })
+	local vertical = vim.g.splitterm_vertical
+	if type(vertical) == "function" then
+		vetical = vertical()
+	end
+	if vertical == nil then
+		vertical = vim.o.columns > 130
+	end
+	window = vim.api.nvim_open_win(assert(buffer), true, { vertical = vertical })
 	vim.wo[window].winfixbuf = true
 end
 local function enter_terminal()
 	if vim.bo[buffer].buftype ~= "terminal" then
-		vim.fn.jobstart(M.get_shell(), { term = true })
+		vim.fn.jobstart(vim.g.splitterm_shell or vim.env.NVIM_SHELL or vim.o.shell, { term = true })
 	end
 	if enter_terminal_mode then
 		vim.cmd.startinsert()
 	end
 end
 
----@return boolean
-function M.get_vertical()
-	local vertical = vim.g.splitterm_vertical
-	if vertical == nil then
-		return vim.o.columns > 130
-	elseif type(vertical) == "function" then
-		return vertical()
-	else
-		return vertical
-	end
-end
----@return string
-function M.get_shell()
-	return vim.g.splitterm_shell or vim.env.NVIM_SHELL or vim.o.shell
-end
+local M = {}
 --- Toggles a perstent split terminal
 --- See `:help split-term-usage` for more information
 function M.toggle()
