@@ -31,5 +31,5 @@ See `:help split-term-setup`
 
 ## Configuration
 
-See `:help split-term-configuration`
+See `:help split-term-config`
 

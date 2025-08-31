@@ -17,7 +17,7 @@ Create a mapping to toggle the split terminal: >lua
 <
 
 ==============================================================================
-CONFIGURATION                                       *split-term-configuration*
+CONFIGURATION                                              *split-term-config*
 
                                                             *split-term-shell*
 Set list of deciding the shell to be used:
