@@ -25,9 +25,9 @@ Toggles a persistent terminal in a split window.
 ```
 </details>
 
-## Usage
+## Setup
 
-See `:help split-term-usage`
+See `:help split-term-setup`
 
 ## Configuration
 

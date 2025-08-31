@@ -6,7 +6,7 @@ Authors:
                                        Type |gO| to see the table of contents.
 
 ==============================================================================
-USAGE                                                       *split-term-usage*
+SETUP                                                       *split-term-setup*
 
                                                        *<Plug>SplitTermToggle*
 Create a mapping to toggle the split terminal: >lua
