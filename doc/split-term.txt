@@ -1,0 +1,42 @@
+*split-term.txt*                 Toggle a split terminal with persistent state
+
+Authors:
+  Jonas Zeltner <jonas.zeltner@posteo.de>
+
+                                       Type |gO| to see the table of contents.
+
+==============================================================================
+USAGE                                                       *split-term-usage*
+
+                                                       *<Plug>SplitTermToggle*
+Create a mapping to toggle the split terminal: >lua
+	vim.keymap.set({ 'n', 'i' }, '<C-Space>', '<Plug>SplitTermToggle')
+< with vimscript: >vim
+	nmap <C-Space> <Plug>SplitTermToggle
+	imap <C-Space> <Plug>SplitTermToggle
+<
+
+==============================================================================
+CONFIGURATION                                       *split-term-configuration*
+
+                                                            *split-term-shell*
+Set list of deciding the shell to be used:
+1. The global variable `splitterm_shell`        *g:split-term_shell*
+2. The environment variable `$NVIM_SHELL`        *$NVIM_SHELL*
+3. The |'shell'| option.
+
+Use `:checkhealth split-term` to verify that the correct shell is being used.
+
+
+                                                      *split-term-orientation*
+By default, the split is created vertically if the terminal window has more
+than 130 columns. To configure this, set the global variable
+`splitterm_vertical`
+ to a boolean: >vim
+	let g:splitterm_vertical = v:true
+< or a function that returns a boolean: >lua
+	vim.g.splitterm_vertical = function() return --[[some condition]] end
+<
+Use `:checkhealth split-term` to see how a new terminal would be opened.
+
+vim:tw=78:ts=8:noet:ft=help:norl:
