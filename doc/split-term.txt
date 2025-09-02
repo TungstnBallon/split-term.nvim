@@ -8,12 +8,12 @@ Authors:
 ==============================================================================
 SETUP                                                       *split-term-setup*
 
-                                                       *<Plug>SplitTermToggle*
+                                                     *<Plug>(SplitTermToggle)*
 Create a mapping to toggle the split terminal: >lua
-	vim.keymap.set({ 'n', 'i' }, '<C-Space>', '<Plug>SplitTermToggle')
+	vim.keymap.set({ 'n', 't' }, '<C-Space>', '<Plug>(SplitTermToggle)')
 < with vimscript: >vim
-	nmap <C-Space> <Plug>SplitTermToggle
-	imap <C-Space> <Plug>SplitTermToggle
+	nmap <C-Space> <Plug>(SplitTermToggle)
+	tmap <C-Space> <Plug>(SplitTermToggle)
 <
 
 ==============================================================================
