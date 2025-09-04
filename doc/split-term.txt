@@ -6,6 +6,12 @@ Authors:
                                        Type |gO| to see the table of contents.
 
 ==============================================================================
+INTRODUCTION                                                *split-term-intro*
+
+split-term.nvim allows you to toggle a split terminal. The terminal's state is
+preserved when closing the window, but not when closing neovim.
+
+==============================================================================
 SETUP                                                       *split-term-setup*
 
                                                      *<Plug>(SplitTermToggle)*
@@ -19,9 +25,11 @@ Create a mapping to toggle the split terminal: >lua
 ==============================================================================
 CONFIGURATION                                              *split-term-config*
 
+split-term.nvim can be configured by setting global variables.
+
                                                             *split-term-shell*
 Set list of deciding the shell to be used:
-1. The global variable `splitterm_shell`        *g:split-term_shell*
+1. The global variable `splitterm_shell`         *g:splitterm_shell*
 2. The environment variable `$NVIM_SHELL`        *$NVIM_SHELL*
 3. The |'shell'| option.
 
