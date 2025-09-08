@@ -34,21 +34,24 @@ end
 local function check_orientation()
 	vim.health.start("Orientation")
 	vim.health.info("See `:help split-term-orientation` for more information")
+
 	local vertical = vim.g.splitterm_vertical
-	local name = "vim.g.splitterm_vertical"
-	if type(vertical) == "function" then
-		vim.health.info(name .. " is a function")
-		vertical = vertical()
-		name = name .. "()"
-	end
 	if vertical == nil then
-		vim.health.ok(name .. " is unset. Splitting vertically if the terminal window has more than 130 colums")
-		vertical = vim.o.columns > 130
+		vim.health.info("g:splitterm_vertical is unset. Splitting horizontally")
+		return
 	end
-	local ok, err = pcall(vim.validate, name, vertical, "boolean")
+
+	if type(vertical) == "function" then
+		vertical = vertical()
+		vim.health.info("g:splitterm_vertical is a function evaluating to `" .. tostring(vertical) .. "`")
+	end
+
+	local ok, err = pcall(vim.validate, "g:splitterm_vertical", vertical, "boolean")
 	if ok == false then
-		vim.health.error(assert(err))
-		return false
+		vim.health.error(assert(err), "See `:help |g:splitterm_vertical|`")
+	else
+		local msg = vertical and "true. Splitting vertically" or "false. Splitting hotizontally"
+		vim.health.ok("g:splitterm_vertical is " .. msg)
 	end
 end
 
@@ -58,4 +61,3 @@ function M.check()
 	check_orientation()
 end
 return M
-

@@ -31,7 +31,7 @@ local function show_buffer()
 		vetical = vertical()
 	end
 	if vertical == nil then
-		vertical = vim.o.columns > 130
+		vertical = false
 	end
 	window = vim.api.nvim_open_win(assert(buffer), true, { vertical = vertical })
 	vim.wo[window].winfixbuf = true

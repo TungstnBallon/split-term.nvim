@@ -37,13 +37,14 @@ Use `:checkhealth split-term` to verify that the correct shell is being used.
 
 
                                                       *split-term-orientation*
-By default, the split is created vertically if the terminal window has more
-than 130 columns. To configure this, set the global variable
-`splitterm_vertical`
- to a boolean: >vim
+By default, the terminal is shown in a horizontal split. This can be 
+configured by setting the global variable `splitterm_vertical`.
+
+                                                        *g:splitterm_vertical*
+Set to true to open the terminal in a vertical split: >vim
 	let g:splitterm_vertical = v:true
-< or a function that returns a boolean: >lua
-	vim.g.splitterm_vertical = function() return --[[some condition]] end
+< or use a function that returns a boolean: >lua
+	vim.g.splitterm_vertical = function() return vim.o.columns > 130 end
 <
 Use `:checkhealth split-term` to see how a new terminal would be opened.
 

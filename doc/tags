@@ -1,6 +1,7 @@
 $NVIM_SHELL	split-term.txt	/*$NVIM_SHELL*
 <Plug>(SplitTermToggle)	split-term.txt	/*<Plug>(SplitTermToggle)*
 g:splitterm_shell	split-term.txt	/*g:splitterm_shell*
+g:splitterm_vertical	split-term.txt	/*g:splitterm_vertical*
 split-term-config	split-term.txt	/*split-term-config*
 split-term-intro	split-term.txt	/*split-term-intro*
 split-term-orientation	split-term.txt	/*split-term-orientation*
