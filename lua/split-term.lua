@@ -28,7 +28,7 @@ local function show_buffer()
 	assert(not window or not vim.api.nvim_win_is_valid(window), "window is not shown")
 	local vertical = vim.g.splitterm_vertical
 	if type(vertical) == "function" then
-		vetical = vertical()
+		vertical = vertical()
 	end
 	if vertical == nil then
 		vertical = false
